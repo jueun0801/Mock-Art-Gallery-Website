@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="css/site.css" rel="stylesheet" type="text/css" />
+   
+</head>
+<body>
+    <div id="gallery">
+
+        <img src="images/mtn1.jpg" />
+        <img src="images/mtn2.jpg" />
+        <img src="images/mtn3.jpg" />
+        <img src="images/mtn4.jpg" />
+        <img src="images/mtn5.jpg" />
+        <img src="images/mtn6.jpg" />
+        <img src="images/color1.jpg" />
+        <img src="images/color2.jpg" />
+        <img src="images/color3.jpg" />
+        <img src="images/color4.jpg" />
+        <img src="images/color5.jpg" />
+        <img src="images/color6.jpg" />
+        <img src="images/color7.jpg" />
+        <img src="images/art3.jpg" />
+        <img src="images/mtn6.jpg" />
+        <img src="images/painting1.jpg" />
+        <img src="images/painting2.jpg" />
+        <img src="images/painting3.jpg" />
+        <img src="images/painting4.jpg" />
+        <img src="images/painting5.jpg" />
+        <img src="images/painting6.jpg" />
+        <img src="images/painting7.jpg" />
+        <img src="images/painting8.jpg" />
+        <img src="images/art1.jpg" />
+        <img src="images/art2.jpg" />
+        <img src="images/art3.jpg" />
+        <img src="images/art4.jpg" />
+        <img src="images/art5.jpg" />
+        <img src="images/sculpture.jpg" />
+
+        <img src="images/sculpture1.jpg" />
+        <img src="images/sculpture2.jpg" />
+        <img src="images/sculpture3.jpg" />
+        <img src="images/sculpture4.jpg" />
+        <img src="images/sculpture5.jpg" />
+
+    </div>
+    <script>
+        let darkBoxVisible = false;
+        window.addEventListener('load', (e) => {
+            let images = document.querySelectorAll("img");
+            if (images !== null && images !== undefined && images.length > 0) {
+                images.forEach(function (img) {
+                    img.addEventListener('click', (event) => {
+                        showDarkbox(img.src);
+                    });
+                });
+            }
+        });
+        function showDarkbox(url) {
+            if (!darkBoxVisible) {
+                let x = (window.innerWidth - 1280) / 2;
+                let y = (window.scrollY + 50);
+
+                //Dark box for image
+                var div = document.createElement("div");
+                div.id = "darkbox";
+                div.innerHTML = '<img class="darkboximg" src="' + url + '"/>';
+                document.body.appendChild(div);
+                let box = document.getElementById("darkbox");
+                box.style.left = x.toString() + "px";
+                box.style.top = y.toString() + "px";
+                box.style.height = 'auto';
+                box.title = "Art Description."
+                box.addEventListener('click', (e) => {
+                    //Remove box
+                    let element = document.getElementById("darkbox");
+                    element.parentNode.removeChild(element);
+                    darkBoxVisible = false;
+                })
+                darkBoxVisible = true;
+            }
+            else {
+                //Remove box
+                let element = document.getElementById("darkbox");
+                element.parentNode.removeChild(element);
+                darkBoxVisible = false;
+            }
+        }
+    </script>
+</body>
+</html>
